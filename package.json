@@ -1,0 +1,22 @@
+{
+  "name": "passwordless-js",
+  "version": "1.0.0",
+  "description": "Browser implementation of PasswordlessJS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/randomprogramming/passwordless-js.git"
+  },
+  "keywords": [
+    "passwordless"
+  ],
+  "author": "Dominik <dgoluban38@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/randomprogramming/passwordless-js/issues"
+  },
+  "homepage": "https://github.com/randomprogramming/passwordless-js#readme"
+}
