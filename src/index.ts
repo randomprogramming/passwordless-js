@@ -1,4 +1,2 @@
-import register from "./register";
-import { CredentialError, ServerError } from "./exceptions";
-
-export default { register, CredentialError, ServerError };
+export { default as register } from "./register";
+export * from "./exceptions";
