@@ -4,7 +4,6 @@ import { abtb64, b64tab } from "./util/encoding";
 
 export default async function (email: string) {
   // Registration begin:
-  const enc = new TextEncoder();
   let attestationOptions;
   try {
     attestationOptions = await registerBegin(email);
@@ -12,13 +11,12 @@ export default async function (email: string) {
     throw new ServerError("Server failed to return registration options.");
   }
 
-  const accountId = attestationOptions.user.id;
   const publicKey = {
     ...attestationOptions,
     challenge: b64tab(attestationOptions.challenge),
     user: {
       ...attestationOptions.user,
-      id: enc.encode(attestationOptions.user.id),
+      id: b64tab(window.btoa(attestationOptions.user.id)),
     },
   };
 
@@ -48,13 +46,13 @@ export default async function (email: string) {
     ).authenticatorAttachment;
   }
   if ((credential.response as any).attestationObject) {
-    encodedCredential.attestationObject = abtb64(
+    encodedCredential.response.attestationObject = abtb64(
       (credential.response as any).attestationObject
     );
   }
 
   try {
-    await registerComplete(encodedCredential, accountId);
+    await registerComplete(email, encodedCredential);
   } catch (err) {
     throw new ServerError("Server failed to complete registration.");
   }

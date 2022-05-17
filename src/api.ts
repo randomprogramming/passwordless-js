@@ -13,13 +13,32 @@ export async function registerBegin(email: string) {
   return response.data;
 }
 
-export async function registerComplete(credentials: object, accountId: string) {
+export async function registerComplete(email: string, credentials: object) {
   const response = await axios.post(
     `${PASSWORDLESS_SERVER_BASE_URL}/api/attestation/complete`,
     {
       credentials,
-      accountId,
+      email,
     }
+  );
+  return response.data;
+}
+
+export async function loginBegin(email: string) {
+  const response = await axios.post(
+    `${PASSWORDLESS_SERVER_BASE_URL}/api/assertion/begin`,
+    { email }
+  );
+  return response.data;
+}
+
+export async function loginComplete(
+  email: string,
+  clientAssertionResponse: object
+) {
+  const response = await axios.post(
+    `${PASSWORDLESS_SERVER_BASE_URL}/api/assertion/complete`,
+    { email, clientAssertionResponse }
   );
   return response.data;
 }
