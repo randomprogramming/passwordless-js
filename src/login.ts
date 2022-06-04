@@ -1,4 +1,4 @@
-import { loginBegin, loginComplete } from "./api";
+import { loginBegin } from "./api";
 import { CredentialError, ServerError } from "./exceptions";
 import { abtb64, b64tab } from "./util/encoding";
 
@@ -54,7 +54,5 @@ export default async function (email: string) {
     encoded.response.userHandle = abtb64(userHandle);
   }
 
-  // TODO: The client should send this to their server, and then transfer it to our server to validate
-  await loginComplete(email, encoded);
-  return true;
+  return { email, clientAssertionResponse: encoded };
 }
