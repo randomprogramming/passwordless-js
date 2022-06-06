@@ -1,2 +1,2 @@
-export { default as Passwordless } from "./Passwordless";
+export { Passwordless } from "./Passwordless";
 export * from "./exceptions";

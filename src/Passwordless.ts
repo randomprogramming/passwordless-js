@@ -2,7 +2,7 @@ import ApiClient from "./api";
 import { CredentialError, ServerError } from "./exceptions";
 import { abtb64, b64tab } from "./util/encoding";
 
-export default class Passwordless {
+class Passwordless {
   private apiClient: ApiClient;
 
   constructor(publicKey: string) {
@@ -120,3 +120,5 @@ export default class Passwordless {
     return { email, clientAssertionResponse: encoded };
   };
 }
+
+export { Passwordless };
