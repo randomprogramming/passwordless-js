@@ -1,3 +1,2 @@
-export { default as register } from "./register";
-export { default as loginBegin } from "./login";
+export { default as Passwordless } from "./Passwordless";
 export * from "./exceptions";
