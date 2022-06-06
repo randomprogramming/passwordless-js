@@ -9,7 +9,7 @@ export default class Passwordless {
     this.apiClient = new ApiClient(publicKey);
   }
 
-  public async registerBegin(email: string) {
+  public registerBegin = async (email: string) => {
     // Registration begin:
     let attestationOptions;
     try {
@@ -63,9 +63,9 @@ export default class Passwordless {
     } catch (err) {
       throw new ServerError("Server failed to complete registration.");
     }
-  }
+  };
 
-  public async loginBegin(email: string) {
+  public loginBegin = async (email: string) => {
     let assertionOptions;
     try {
       assertionOptions = await this.apiClient.loginBegin(email);
@@ -118,5 +118,5 @@ export default class Passwordless {
     }
 
     return { email, clientAssertionResponse: encoded };
-  }
+  };
 }

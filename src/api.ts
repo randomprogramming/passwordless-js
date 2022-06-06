@@ -18,23 +18,23 @@ export default class ApiClient {
     });
   }
 
-  public async registerBegin(email: string) {
+  public registerBegin = async (email: string) => {
     const response = await this.client.post("/api/attestation/begin", {
       email,
     });
     return response.data;
-  }
+  };
 
-  public async registerComplete(email: string, credentials: object) {
+  public registerComplete = async (email: string, credentials: object) => {
     const response = await this.client.post("/api/attestation/complete", {
       credentials,
       email,
     });
     return response.data;
-  }
+  };
 
-  public async loginBegin(email: string) {
+  public loginBegin = async (email: string) => {
     const response = await this.client.post("/api/assertion/begin", { email });
     return response.data;
-  }
+  };
 }
