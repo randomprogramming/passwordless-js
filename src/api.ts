@@ -1,8 +1,6 @@
 import type { Axios } from "axios";
 import axios from "axios";
-
-// TODO: Put this in some sort of env variable /// not sure yet
-const PASSWORDLESS_SERVER_BASE_URL = "http://localhost:3003";
+import { PASSWORDLESS_SERVER_BASE_URL } from "./constants";
 
 export default class ApiClient {
   private publicKey: string;
@@ -19,14 +17,14 @@ export default class ApiClient {
   }
 
   public registerBegin = async (email: string) => {
-    const response = await this.client.post("/api/attestation/begin", {
+    const response = await this.client.post("/attestation/begin", {
       email,
     });
     return response.data;
   };
 
   public registerComplete = async (email: string, credentials: object) => {
-    const response = await this.client.post("/api/attestation/complete", {
+    const response = await this.client.post("/attestation/complete", {
       credentials,
       email,
     });
@@ -34,7 +32,7 @@ export default class ApiClient {
   };
 
   public loginBegin = async (email: string) => {
-    const response = await this.client.post("/api/assertion/begin", { email });
+    const response = await this.client.post("/assertion/begin", { email });
     return response.data;
   };
 }
