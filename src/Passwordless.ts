@@ -34,6 +34,8 @@ class Passwordless {
       throw new CredentialError("Failed to create credentials.");
     }
 
+    // TODO: Send transports to backend
+
     // Registration complete:
     const encodedCredential: any = {
       ...credential,
