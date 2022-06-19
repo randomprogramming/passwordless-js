@@ -9,7 +9,7 @@ class Passwordless {
     this.apiClient = new ApiClient(publicKey);
   }
 
-  public registerBegin = async (email: string) => {
+  public registerDevice = async (email: string) => {
     // Registration begin:
     let attestationOptions;
     try {
