@@ -5,8 +5,8 @@ import { abtb64, b64tab } from "./util/encoding";
 class Passwordless {
   private apiClient: ApiClient;
 
-  constructor(publicKey: string) {
-    this.apiClient = new ApiClient(publicKey);
+  constructor(publicKey: string, customServerBaseUrl?: string) {
+    this.apiClient = new ApiClient(publicKey, customServerBaseUrl);
   }
 
   public registerDevice = async (email: string) => {

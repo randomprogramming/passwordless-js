@@ -5,11 +5,13 @@ import { PASSWORDLESS_SERVER_BASE_URL } from "./constants";
 export default class ApiClient {
   private publicKey: string;
   private client: Axios;
+  private serverBaseUrl: string;
 
-  constructor(publicKey: string) {
+  constructor(publicKey: string, customServerBaseUrl?: string) {
+    this.serverBaseUrl = customServerBaseUrl || PASSWORDLESS_SERVER_BASE_URL;
     this.publicKey = publicKey;
     this.client = axios.create({
-      baseURL: PASSWORDLESS_SERVER_BASE_URL,
+      baseURL: this.serverBaseUrl,
       headers: {
         Authorization: `Basic ${this.publicKey}`,
       },
