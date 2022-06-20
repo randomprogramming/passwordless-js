@@ -1,7 +1,7 @@
 {
-  "name": "passwordlessjs",
+  "name": "passwordless-js",
   "version": "1.0.0",
-  "description": "Browser implementation of PasswordlessJS.",
+  "description": "Browser implementation of unpass.me",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
